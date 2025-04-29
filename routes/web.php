@@ -8,9 +8,7 @@ use App\Http\Controllers\Api\ChapterController;
 
 
 Route::get('/', function () {
-    if (Auth::check()) {
-        return "test";
-    }
+   
     return view('myApp');
 })->name('login');
 
