@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -38,32 +39,24 @@ class AuthController extends Controller
     /**
      * Connexion d'un utilisateur existant.
      */
-    public function login(Request $request)
+public function login(Request $request)
     {
-        // Valider les données envoyées
         $data = $request->validate([
             'email'    => 'required|email',
             'password' => 'required|string',
         ]);
 
-        // Rechercher l'utilisateur par email
-        $user = User::where('email', $data['email'])->first();
-
-        // Vérifier que l'utilisateur existe et que le mot de passe correspond
-        if (!$user || !Hash::check($data['password'], $user->password)) {
-            return response()->json([
-                'message' => 'Identifiants invalides.',
-            ], 422);
+        if (!Auth::attempt($data)) {
+            return response()->json(['message' => 'Identifiants invalides.'], 422);
         }
 
-        // Créer un token d'authentification via Laravel Sanctum
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $request->session()->regenerate();
+
+        $user = Auth::user();
 
         return response()->json([
-            'message'      => 'Connexion réussie.',
-            'access_token' => $token,
-            'token_type'   => 'Bearer',
-            'user'         => $user,
+          'message'      => 'Connexion réussie.',
+          'user'         => $user,
         ], 200);
     }
 
