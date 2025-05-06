@@ -59,12 +59,11 @@ export default {
     },
     async handleLogout() {
       try {
-        await AuthService.logout();
+         await AuthService.logout();
         this.user = null;
-        this.showChapter = false; // Réinitialise l'affichage du chapitre
-        this.currentView = 'register';
-      } catch (error) {
-        console.error('Erreur lors de la déconnexion', error);
+        this.currentView = 'login';
+      } catch (e) {
+        console.error('Erreur de déconnexion', e);
       }
     },
     startChapter() {
