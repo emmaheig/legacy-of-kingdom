@@ -13,6 +13,8 @@
 
 <script>
 import axios from '../axios';
+import Swal  from 'sweetalert2'
+
 
 export default {
   props: {
@@ -42,7 +44,16 @@ export default {
       if (choice.next_chapter_id) {
         this.fetchChapter(choice.next_chapter_id);
       } else {
-        alert('Fin de l’histoire !');
+        await Swal.fire({
+          title: 'Vous avez perdu !',
+          text:  'Fin de l\'histoire, voulez-vous continuer ?',
+          icon:  'info',
+          confirmButtonText: 'OK',
+          background: '#f4f4f4', // Couleur de fond de l'alerte
+          color: '#333', // Couleur du texte
+          confirmButtonColor: '#42b983', // Couleur du bouton de confirmation
+          iconColor: '#42b983',
+        })
       }
     },
   },
