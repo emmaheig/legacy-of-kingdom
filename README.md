@@ -1,4 +1,4 @@
-# 🏰 Legacy of Kingdoms
+# 🏯 Legacy of Kingdoms
 
 ## Table des matières
 - [Principe général](#principe-général)  
@@ -118,11 +118,18 @@ L’histoire se divise en **20 chapitres**, chacun offrant :
     ```bash
     npm install
     ```
- 
-2. Lancez le serveur de développement Vue.js :
+
+2. Compile le front-end en mode production et place les assets :
  
     ```bash
-    npm run serve
+    npm run build
+    ```
+
+ 
+3.Démarre simultanément le back-end et le front-end :
+ 
+    ```bash
+    composer run dev
     ```
 
 
