@@ -126,7 +126,7 @@ L’histoire se divise en **20 chapitres**, chacun offrant :
     ```
 
  
-3.Démarre simultanément le back-end et le front-end :
+3. Compile le front-end en mode production et place les assets :
  
     ```bash
     composer run dev
