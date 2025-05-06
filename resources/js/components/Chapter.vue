@@ -33,6 +33,7 @@ export default {
         const response = await axios.get(`/chapters/${id}`);
         this.chapter = response.data;
         this.choices = response.data.choices;
+        localStorage.setItem('currentChapterId', id); // Sauvegarde l'ID du chapitre actuel
       } catch (error) {
         console.error('Erreur lors de la récupération du chapitre :', error);
       }
@@ -46,7 +47,12 @@ export default {
     },
   },
   mounted() {
-    this.fetchChapter(this.initialChapterId);
-  },
-};
+    const savedChapterId = localStorage.getItem('currentChapterId');
+    if (savedChapterId) {
+      this.fetchChapter(savedChapterId); // Charge le chapitre sauvegardé
+    } else {
+      this.fetchChapter(this.initialChapterId); // Charge le chapitre initial
+    }
+    },
+  };
 </script>

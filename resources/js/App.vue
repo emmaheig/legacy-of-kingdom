@@ -37,8 +37,10 @@ export default {
   data() {
     return {
       // Afficher d'abord l'inscription
-      currentView: 'register',
-      user: null,
+      currentView: 'login',
+
+      // Récupérer l'utilisateur depuis le back
+      user: Number(document.querySelector('meta[name="is-auth"]')?.getAttribute('content')),
       showChapter: false, // Gère l'affichage du chapitre
     };
   },
@@ -62,15 +64,53 @@ export default {
          await AuthService.logout();
         this.user = null;
         this.currentView = 'login';
+        localStorage.removeItem('currentChapterId'); // Supprime l'ID du chapitre en cours
+
       } catch (e) {
         console.error('Erreur de déconnexion', e);
       }
     },
+
+    async checkAuth() {
+      try {
+        const response = await AuthService.getUser(); // Appelle une API pour récupérer l'utilisateur
+        this.user = response.data; // Restaure les informations de l'utilisateur
+      } catch (error) {
+        console.error('Utilisateur non authentifié', error);
+        this.user = null;
+        this.currentView = 'login'; // Redirige vers la vue Login si non authentifié
+        localStorage.removeItem('currentChapterId'); // Supprime l'ID du chapitre
+      }
+    },
+
     startChapter() {
       this.showChapter = true; // Affiche le composant Chapter
+      localStorage.setItem('currentChapterId', 1); // Sauvegarde l'ID du chapitre 1
     },
   },
+
+  mounted() {
+    // Vérifie si un chapitre est sauvegardé dans localStorage
+    const savedChapterId = localStorage.getItem('currentChapterId');
+    if (savedChapterId) {
+      this.showChapter = true; // Affiche le composant Chapter
+    }
+    
+
+  },
+    saveCurrentChapter(chapterId) {
+      localStorage.setItem('currentChapterId', chapterId); // Sauvegarde l'ID du chapitre actuel
+    },
+
+
+
 };
+
+
+
+
+
+
 </script>
 
 <style scoped>

@@ -5,3 +5,4 @@
 @section('app')
     @vite(['resources/js/app.js'])
 @endsection
+

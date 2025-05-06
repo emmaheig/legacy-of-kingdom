@@ -65,8 +65,9 @@ public function login(Request $request)
      */
     public function logout(Request $request)
     {
-        // Révoquer le token utilisé pour la requête en cours
-        $request->user()->currentAccessToken()->delete();
+       $request->session()->invalidate();
+       $request->session()->regenerate();
+       Auth::logout();
 
         return response()->json([
             'message' => 'Déconnexion réussie.',
