@@ -95,7 +95,7 @@ export default {
     if (savedChapterId) {
       this.showChapter = true; // Affiche le composant Chapter
     }
-    
+
 
   },
     saveCurrentChapter(chapterId) {

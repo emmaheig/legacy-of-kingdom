@@ -1,6 +1,6 @@
 <!-- filepath: c:\Legacy of Kingdoms\backEnd\resources\js\components\Chapter.vue -->
 <template>
-  <div>
+  <div class="chapter-container">
     <h1>{{ chapter?.title }}</h1>
     <p>{{ chapter?.content }}</p>
     <ul>
@@ -56,3 +56,29 @@ export default {
     },
   };
 </script>
+
+<style scoped>
+.chapter-container {
+  min-height: 100vh;
+  padding: 2rem;
+  background-image: url('/chapter_bg.png');
+  background-size: cover;
+  background-position: center;
+  /* pour rendre le texte lisible */
+  color: #fff;
+  text-shadow: 0 0 4px rgba(0,0,0,0.7);
+  /* empiler les enfants au-dessus du background */
+  position: relative;
+  z-index: 1;
+}
+
+/* pour un overlay sombre */
+.chapter-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: -1;
+}
+</style>
+
