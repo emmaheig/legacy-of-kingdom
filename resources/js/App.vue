@@ -5,7 +5,7 @@
       <h2>Bienvenue, {{ user.name }} !</h2>
 
       <!-- Bouton pour accéder au premier chapitre -->
-      <button v-if="!showChapter" @click="startChapter">Commencer le premier chapitre</button>
+      <button v-if="!showChapter" @click="startChapter">Lire l'histoire "Legacy of Kingdoms"</button>
 
      <!-- Bouton pour se déconnecter -->
      <button @click="handleLogout">Déconnexion</button>
