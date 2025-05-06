@@ -71,7 +71,6 @@ L’histoire se divise en **20 chapitres**, chacun offrant :
 - **Navigation interactive** : 20 chapitres, branchements multiples  
 - **Game Over** possible à presque chaque décision  
 - **Déconnexion & page dédiée**  
-- **Responsive & mobile-first**
 
 ---
 
@@ -113,19 +112,14 @@ L’histoire se divise en **20 chapitres**, chacun offrant :
  
 ## front-end (Vue.js)
  
-1. Allez dans le dossier `frontend` :
  
-    ```bash
-    cd frontend
-    ```
- 
-2. Installez les dépendances npm :
+1. Installez les dépendances npm :
  
     ```bash
     npm install
     ```
  
-3. Lancez le serveur de développement Vue.js :
+2. Lancez le serveur de développement Vue.js :
  
     ```bash
     npm run serve
@@ -140,14 +134,16 @@ Front-end : http://localhost:5173
 Accédez à http://localhost:5173 pour jouer.
 
 📖 Documentation de l’API
-Méthode	Route	Description
-POST	/api/v1/register	Créer un nouveau compte utilisateur
-POST	/api/v1/login	Authentifier et obtenir un token
-POST	/api/v1/logout	Révoquer le token en cours (déconnexion)
-GET	/api/v1/user	Récupérer l’utilisateur connecté
-GET	/api/v1/chapters	Obtenir la liste de tous les chapitres
-GET	/api/v1/choices/{id}	Choix disponibles pour le chapitre {id}
-POST	/api/v1/choices/{id}	Soumettre un choix et appliquer les effets
+| Méthode | Route                      | Description                                                      |
+|--------:|----------------------------|------------------------------------------------------------------|
+| POST    | `/api/v1/register`         | Crée un nouveau compte utilisateur                               |
+| POST    | `/api/v1/login`            | Authentifie l’utilisateur et retourne un token d’accès           |
+| POST    | `/api/v1/logout`           | Révoque le token courant (déconnexion)                           |
+| GET     | `/api/v1/user`             | Récupère les informations de l’utilisateur connecté              |
+| GET     | `/api/v1/chapters`         | Récupère la liste de tous les chapitres                          |
+| GET     | `/api/v1/choices/{id}`     | Récupère les choix disponibles pour le chapitre d’ID `{id}`      |
+| POST    | `/api/v1/choices/{id}`     | Soumet un choix (ID `{id}`) et applique ses effets sur les stats |
+
 
 
 🤝 Contribution
