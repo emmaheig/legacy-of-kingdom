@@ -32,16 +32,6 @@ L’histoire se divise en **20 chapitres**, chacun offrant :
 - **Choix à conséquences** : alliances, intrigues, batailles, ou fins tragiques 
 - **Branches multiples** : succès, échecs et Game Over  
 
----
-
-## 🔢 Variables suivies
-| Variable     | Impact                                                      |
-|--------------|-------------------------------------------------------------|
-| `réputation` | Influence ton rang à la cour et le soutien des seigneurs    |
-| `richesse`   | Permet d’acheter faveurs, armes ou ressources stratégiques  |
-| `influence`  | Débloque des alliances diplomatiques et militaires          |
-| `sagesse`    | Améliore tes chances lors des choix politiques ou philosophiques |
-| `courage`    | Nécessaire pour les batailles et les duels décisifs         |
 
 ---
 
