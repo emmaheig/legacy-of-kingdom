@@ -46,7 +46,7 @@ export default {
       } else {
         await Swal.fire({
           title: 'Vous avez perdu !',
-          text:  'Fin de l\'histoire, voulez-vous continuer ?',
+          text:  'Voulez-vous tout de même continuer ?',
           icon:  'info',
           confirmButtonText: 'OK',
           background: '#f4f4f4', // Couleur de fond de l'alerte
