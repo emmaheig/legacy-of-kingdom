@@ -90,6 +90,8 @@ export default {
   },
 
   mounted() {
+    this.checkAuth(); // Vérifie si l'utilisateur est authentifié
+
     // Vérifie si un chapitre est sauvegardé dans localStorage
     const savedChapterId = localStorage.getItem('currentChapterId');
     if (savedChapterId) {
